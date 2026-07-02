@@ -10,11 +10,10 @@
         
         /* โลโก้ */
         .logo-box { margin-bottom: 30px; }
-        /* สลับลำดับใน CSS ให้สอดคล้องกับ HTML */
-        .logo-box img { width: 200px; height: auto; border-radius: 0; border: 5px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: contain; margin-bottom: 15px; } /* เอา margin-top ออก เพิ่ม margin-bottom */
-        .logo-box h1 { color: #333; font-size: 30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0; margin-bottom: 20px; } /* ปรับ margin-top เป็น 0 เพิ่ม margin-bottom สำหรับช่องค้นหา */
+        .logo-box img { width: 200px; height: auto; border-radius: 0; border: 5px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: contain; margin-bottom: 15px; }
+        .logo-box h1 { color: #333; font-size: 30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0; margin-bottom: 20px; }
 
-        /* --- ระบบค้นหา (คงเดิมตามที่เพิ่มใหม่) --- */
+        /* --- ระบบค้นหา --- */
         .search-container { margin-bottom: 30px; }
         #searchInput {
             width: 100%;
@@ -33,23 +32,53 @@
             box-shadow: 0 4px 15px rgba(230,126,34,0.2);
         }
         #no-results {
-            display: none; /* ซ่อนไว้ก่อน จะโชว์ตอนค้นไม่เจอ */
+            display: none;
             padding: 40px 20px;
             color: #777;
             text-align: center;
         }
 
-        /* Grid */
+        /* Grid เมนูอาหาร */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; text-align: left; }
         .food-item { background: #ffffff; padding: 15px; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .food-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
 
         .food-name { font-size: 18px; font-weight: 700; color: #2d3436; display: block; margin-bottom: 10px; min-height: 25px; }
-        
-        /* รูปภาพ (กดได้) */
         .food-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 10px; background-color: #f0f0f0; cursor: zoom-in; }
-        
         .food-price { font-size: 20px; font-weight: 800; color: #e67e22; text-align: right; display: block; }
+
+        /* --- ปุ่มลิงก์เพิ่มเติม (ดีไซน์ใหม่ อยู่ล่างสุด) --- */
+        .footer-link {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f1f2f6;
+            display: flex;
+            justify-content: center;
+        }
+        .more-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: #fff;
+            padding: 15px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(230,126,34,0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .more-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(230,126,34,0.4);
+            background: linear-gradient(135deg, #d35400, #c0392b);
+        }
+        .more-btn:active {
+            transform: translateY(-1px);
+        }
 
         /* --- ระบบดูรูปใหญ่ (Lightbox) --- */
         #lightbox {
@@ -75,6 +104,7 @@
         @media (max-width: 750px) { 
             .menu-grid { grid-template-columns: 1fr; } 
             .logo-box h1 { font-size: 22px; white-space: normal; } 
+            .more-btn { width: 100%; max-width: 300px; padding: 14px 20px; font-size: 18px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&display=swap" rel="stylesheet">
@@ -88,7 +118,9 @@
 
     <div class="menu-card">
         <div class="logo-box">
-            <img src="IMG_2551.png" alt="Logo"> <h1>เมนูอาหารร้านบ้านตั้ม&ตุ๋ย</h1> </div>
+            <img src="IMG_2551.png" alt="Logo"> 
+            <h1>เมนูอาหารร้านบ้านตั้ม&ตุ๋ย</h1> 
+        </div>
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="🔍 ค้นหาเมนูอาหาร..." onkeyup="searchMenu()">
@@ -154,57 +186,57 @@
                 <img src="IMG_2562.jpeg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">150.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ไข่ตุ๋นหม้อไฟ</span>
                 <img src="1.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ต้มยำปลากดคัง</span>
                 <img src="2.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">140.-/200.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">กระเพาะปลาผัดแห้ง</span>
                 <img src="3.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ผัดเผ็ดปลาแม่น้ำ ราคาตามน้ำหนัก</span>
                 <img src="5.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">150.-/250.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">แกงป่าปลาแม่น้ำ ราคาตามน้ำหนัก</span>
                 <img src="6.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">150.-/250.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ปลาคังลวกจิ้ม</span>
                 <img src="8.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">150.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">แกงส้มชะอม</span>
                 <img src="9.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">140.-/200.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ยำปลาทับทิมสมุนไพร</span>
                 <img src="10.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">280.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">กุ้งซอสมะขาม</span>
                 <img src="11.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ไก่ผัดเม็ดมะม่วง</span>
                 <img src="12.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">150.-</span>
             </div>
-              <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">แกงคั่วปู</span>
                 <img src="8.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
@@ -214,75 +246,80 @@
                 <img src="IMG_2563.jpeg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">100.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ปลาทับทิมทอดกระเทียม</span>
                 <img src="14.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">280.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">กุ้งคั่วพริกเกลือ</span>
                 <img src="15.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ยำวุ้นเส้นโบราณ</span>
                 <img src="16.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">100.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ออส่วนทะเล</span>
                 <img src="17.JPG" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">200.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">พริกเผาทะเล</span>
                 <img src="18.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ปูนิ่มผัดผงกระหรี่</span>
                 <img src="19.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">200.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ยำผักบุ้งกรอบ</span>
                 <img src="20.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">120.-</span>
             </div>
-               <div class="food-item">
+            <div class="food-item">
                 <span class="food-name">ผัดฉ่าปลาแม่น้ำ</span>
                 <img src="21.jpg" class="food-img" onclick="showImage(this.src)">
                 <span class="food-price">180.-</span>
             </div>
         </div>
+
+        <div class="footer-link">
+            <a href="https://tum-tuy.github.io/Tum-Tuy3/" target="_blank" class="more-btn">
+                เมนูถัดไป ➔
+            </a>
+        </div>
     </div>
 
     <script>
-        // ระบบซูมรูปภาพ (ของเดิม)
+        // ระบบซูมรูปภาพ
         function showImage(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
         }
 
-        // ระบบค้นหาอาหาร (คงเดิมตามที่เพิ่มใหม่)
+        // ระบบค้นหาอาหาร
         function searchMenu() {
-            let input = document.getElementById('searchInput').value.toLowerCase(); // รับค่าที่พิมพ์และแปลงเป็นตัวเล็ก
-            let menuItems = document.getElementsByClassName('food-item'); // ดึงกล่องเมนูทั้งหมด
-            let noResults = document.getElementById('no-results'); // กล่องข้อความแจ้งเตือน
-            let hasMatch = false; // ตัวแปรเช็คว่าเจอเมนูไหม
+            let input = document.getElementById('searchInput').value.toLowerCase(); 
+            let menuItems = document.getElementsByClassName('food-item'); 
+            let noResults = document.getElementById('no-results'); 
+            let hasMatch = false; 
 
             for (let i = 0; i < menuItems.length; i++) {
-                let foodName = menuItems[i].getElementsByClassName('food-name')[0].innerText.toLowerCase(); // ดึงชื่ออาหาร
+                let foodName = menuItems[i].getElementsByClassName('food-name')[0].innerText.toLowerCase(); 
                 
                 if (foodName.includes(input)) {
-                    menuItems[i].style.display = ""; // ถ้าตรง ให้แสดง
+                    menuItems[i].style.display = ""; 
                     hasMatch = true;
                 } else {
-                    menuItems[i].style.display = "none"; // ถ้าไม่ตรง ให้ซ่อน
+                    menuItems[i].style.display = "none"; 
                 }
             }
 
-            // ถ้าระบบหาไม่เจอเลยสักเมนู ให้โชว์หน้า "ไม่พบข้อมูล"
             if (hasMatch) {
                 noResults.style.display = "none";
             } else {
@@ -292,10 +329,3 @@
     </script>
 </body>
 </html>
-
-<!-- ปุ่มลิงก์เพิ่มเติม -->
-<div class="footer-link">
-    <a href="https://tum-tuy.github.io/Tum-Tuy3/" target="_blank" class="more-btn">
-        หน้าถัดไป
-    </a>
-</div>
